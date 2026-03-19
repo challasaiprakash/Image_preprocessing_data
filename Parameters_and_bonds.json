@@ -1,0 +1,176 @@
+
+    # ── 0: binarization ──────────────────────────────────────────
+    0: {'threshold': (0, 255, 'int'), 'max_val': (0, 255, 'int')},
+
+    # ── 1: conversion_character ─────────────────────────────────────
+    # Controls character-map / intensity remapping style
+    1: {'mode': (0, 3, 'int')},                    # 0=gray,1=binary,2=edge,3=sketch
+
+    # ── 2: equalized_image ───────────────────────────────────────
+    2: {'clip_limit': (1.0, 10.0, 'float'), 'grid_size': (2, 16, 'int')},
+
+    # ── 3: enhanced_image ────────────────────────────────────────
+    3: {},
+
+    # ── 4: integral_fourier ─────────────────────────────────────────
+    # Frequency-domain low/high cut radii
+    4: {'cutoff_low': (5, 50, 'int'), 'cutoff_high': (50, 200, 'int')},
+
+    # ── 5: normal ───────────────────────────────────────────────────
+    # Simple pixel normalization range
+    5: {'alpha': (0, 100, 'int'), 'beta': (155, 255, 'int')},
+
+    # ── 6: smoothing_noise ───────────────────────────────────────
+    6: {'h': (3, 15, 'int')},
+
+    # ── 7: dog_edge_detector ─────────────────────────────────────
+    7: {'kernel_size1': (3, 15, 'int'), 'sigma1': (0.5, 5.0, 'float'),
+        'kernel_size2': (3, 15, 'int'), 'sigma2': (0.5, 5.0, 'float')},
+
+    # ── 8: laplacian ─────────────────────────────────────────────
+    8: {},
+
+    # ── 9: marr_hildreth_edge_detector ──────────────────────────────
+    # LoG: Gaussian sigma before Laplacian + zero-crossing threshold
+    9: {'sigma': (0.5, 5.0, 'float'), 'threshold': (0, 50, 'int')},
+
+    # ── 10: canny_edge_detector ──────────────────────────────────
+    10: {'low_threshold': (30, 100, 'int'), 'high_threshold': (100, 200, 'int')},
+
+    # ── 11: deriche_edge_detection ──────────────────────────────────
+    # Alpha controls smoothing (large=smooth, small=sharp)
+    11: {'alpha': (0.1, 5.0, 'float'), 'omega': (0.0, 1.0, 'float')},
+
+    # ── 12: krisch_edge_detection ───────────────────────────────────
+    # Kirsch uses 8-direction compass; threshold for edge decision
+    12: {'threshold': (50, 200, 'int')},
+
+    # ── 13: prewitt_edge_detection ──────────────────────────────────
+    13: {'kernel_size': (3, 7, 'int'), 'threshold': (20, 150, 'int')},
+
+    # ── 14: roberts_edge_detection ──────────────────────────────────
+    14: {'threshold': (20, 150, 'int')},
+
+    # ── 15: sobel_edge_detection ─────────────────────────────────
+    15: {'kernel_size': (3, 7, 'int')},
+
+    # ── 16: apply_average_filter ─────────────────────────────────
+    16: {'kernel_size': (3, 15, 'int')},
+
+    # ── 17: lowpass_filter ──────────────────────────────────────────
+    # Ideal/Gaussian LP in frequency domain; cutoff radius
+    17: {'cutoff': (5, 100, 'int'), 'order': (1, 5, 'int')},
+
+    # ── 18: recursive_filter ────────────────────────────────────────
+    # IIR-style recursive smoothing; decay constant a in (0,1)
+    18: {'a': (0.01, 0.99, 'float')},
+
+    # ── 19: separable_filter ────────────────────────────────────────
+    # Separable kernel applied along each axis; sigma for 1-D Gaussian
+    19: {'sigma_x': (0.5, 5.0, 'float'), 'sigma_y': (0.5, 5.0, 'float'),
+         'kernel_size': (3, 15, 'int')},
+
+    # ── 20: upperpass_filter ────────────────────────────────────────
+    # High-pass: block frequencies below cutoff
+    20: {'cutoff': (5, 100, 'int'), 'order': (1, 5, 'int')},
+
+    # ── 21: affine_transform ─────────────────────────────────────
+    21: {'scale_x': (0.5, 2.0, 'float'), 'scale_y': (0.5, 2.0, 'float'),
+         'shift_x': (-50, 50, 'int'), 'shift_y': (-50, 50, 'int')},
+
+    # ── 22: bilinear_interpolation ───────────────────────────────
+    22: {'scale_factor': (0.5, 2.0, 'float')},
+
+    # ── 23: image_shifting ───────────────────────────────────────
+    23: {'shift_x': (-100, 100, 'int'), 'shift_y': (-100, 100, 'int')},
+
+    # ── 24: nearest_neighbor_interpolation ──────────────────────────
+    24: {'scale_factor': (0.5, 2.0, 'float')},
+
+    # ── 25: rotating_the_image ───────────────────────────────────
+    25: {'angle': (-45, 45, 'int'), 'scale': (0.8, 1.2, 'float')},
+
+    # ── 26: scaleing ────────────────────────────────────────────────
+    26: {'scale_x': (0.5, 3.0, 'float'), 'scale_y': (0.5, 3.0, 'float')},
+
+    # ── 27: skeletonization ─────────────────────────────────────────
+    # Thinning iterations; threshold to binarize before skeletonization
+    27: {'threshold': (50, 200, 'int'), 'iterations': (1, 10, 'int')},
+
+    # ── 28: waveletAPP ──────────────────────────────────────────────
+    # Approximation subband; decomposition level and soft-threshold
+    28: {'level': (1, 5, 'int'), 'threshold': (0.0, 50.0, 'float')},
+
+    # ── 29: active_countors ─────────────────────────────────────────
+    # Snake: alpha=elasticity, beta=stiffness, gamma=step
+    29: {'alpha': (0.001, 1.0, 'float'), 'beta': (0.001, 1.0, 'float'),
+         'gamma': (0.001, 0.1, 'float'), 'iterations': (50, 500, 'int')},
+
+    # ── 30: edge_detection_methods ──────────────────────────────────
+    # Generic dispatcher; method index selects algorithm
+    30: {'method': (0, 5, 'int'), 'threshold': (20, 200, 'int')},
+
+    # ── 31: parametric_threshold ────────────────────────────────────
+    # Mean ± k*std thresholding
+    31: {'k': (0.1, 3.0, 'float'), 'offset': (-50, 50, 'int')},
+
+    # ── 32: watershedFG ─────────────────────────────────────────────
+    # Foreground marker dilation before watershed
+    32: {'kernel_size': (3, 15, 'int'), 'iterations': (1, 5, 'int'),
+         'threshold': (0, 255, 'int')},
+
+    # ── 33: closing_operation ────────────────────────────────────
+    33: {'kernel_size': (3, 15, 'int'), 'iterations': (1, 5, 'int')},
+
+    # ── 34: dilation ─────────────────────────────────────────────
+    34: {'kernel_size': (3, 15, 'int'), 'iterations': (1, 5, 'int')},
+
+    # ── 35: erosion ──────────────────────────────────────────────
+    35: {'kernel_size': (3, 15, 'int'), 'iterations': (1, 5, 'int')},
+
+    # ── 36: opening_operation ────────────────────────────────────
+    36: {'kernel_size': (3, 15, 'int'), 'iterations': (1, 5, 'int')},
+
+    # ── 37: histogram_equalization ──────────────────────────────────
+    # Standard global HE — no parameters needed (CLAHE variant uses clip/grid)
+    37: {},
+
+    # ── 38: nearest_neighbour ───────────────────────────────────────
+    38: {'scale_factor': (0.5, 2.0, 'float')},
+
+    # ── 39: mode_filter ─────────────────────────────────────────────
+    # Replaces pixel with modal value in window
+    39: {'kernel_size': (3, 15, 'int')},
+
+    # ── 40: median_filter ────────────────────────────────────────
+    40: {'kernel_size': (3, 15, 'int')},
+
+    # ── 41: bilateral_filter ─────────────────────────────────────
+    41: {'d': (5, 15, 'int'), 'sigma_color': (10, 100, 'int'),
+         'sigma_space': (10, 100, 'int')},
+
+    # ── 42: gaussian_filter ──────────────────────────────────────
+    42: {'sigma': (0.5, 5.0, 'float')},
+
+    # ── 43: watershedBG ─────────────────────────────────────────────
+    # Background marker erosion before watershed
+    43: {'kernel_size': (3, 15, 'int'), 'iterations': (1, 5, 'int'),
+         'threshold': (0, 255, 'int')},
+
+    # ── 44: watershedunknow ─────────────────────────────────────────
+    # Unknown region between FG/BG markers
+    44: {'fg_threshold': (100, 240, 'int'), 'bg_threshold': (10, 100, 'int')},
+
+    # ── 45: waveletHD ───────────────────────────────────────────────
+    # Horizontal detail subband denoising
+    45: {'level': (1, 5, 'int'), 'threshold': (0.0, 50.0, 'float')},
+
+    # ── 46: waveletVD ───────────────────────────────────────────────
+    # Vertical detail subband denoising
+    46: {'level': (1, 5, 'int'), 'threshold': (0.0, 50.0, 'float')},
+
+    # ── 47: waveletAPPDD ────────────────────────────────────────────
+    # Diagonal detail + approximation combined; extra reconstruction flag
+    47: {'level': (1, 5, 'int'), 'threshold': (0.0, 50.0, 'float'),
+         'reconstruct': (0, 1, 'int')},
+}
